@@ -1,0 +1,99 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const navLinks = [
+  { label: "Work", href: "#work" },
+  { label: "Skills", href: "#skills" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<nav
+  class={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/50 ${className ?? ""}`}
+>
+  <div
+    class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+  >
+    <a href="/" class="flex items-center gap-2">
+      <img src="/brand/logo.svg" alt="krobawsky.dev" class="h-12" />
+    </a>
+
+    <div class="hidden items-center gap-1 sm:flex">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-lg px-4 py-2 text-sm text-muted transition-colors duration-200 hover:text-foreground hover:bg-surface"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <button
+      id="mobile-menu-toggle"
+      class="flex items-center justify-center rounded-lg p-2 text-muted hover:text-foreground hover:bg-surface sm:hidden"
+      aria-label="Toggle menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-border/50 px-4 py-4 sm:hidden"
+  >
+    <div class="flex flex-col gap-2">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-lg px-4 py-2.5 text-sm text-muted transition-colors duration-200 hover:text-foreground hover:bg-surface"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+
+  if (toggle && menu) {
+    toggle.addEventListener("click", () => {
+      const isOpen = !menu.classList.contains("hidden");
+      menu.classList.toggle("hidden");
+      toggle.setAttribute("aria-expanded", !isOpen);
+    });
+  }
+
+  document.querySelectorAll("#mobile-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu?.classList.add("hidden");
+      toggle?.setAttribute("aria-expanded", "false");
+    });
+  });
+</script>

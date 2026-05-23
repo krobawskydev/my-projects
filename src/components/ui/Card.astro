@@ -1,0 +1,24 @@
+---
+
+export interface Props {
+  class?: string
+  hover?: boolean
+  glow?: boolean
+}
+
+const { class: className, hover = true, glow = false } = Astro.props
+
+const baseStyles =
+  'rounded-xl border border-border bg-surface overflow-hidden transition-all duration-300'
+
+const hoverStyles = hover
+  ? 'hover:border-accent/20 hover:bg-elevated hover:-translate-y-0.5'
+  : ''
+
+const glowStyles = glow ? 'hover:shadow-[0_0_30px_-10px_var(--color-accent)]' : ''
+
+---
+
+<div class={`${baseStyles} ${hoverStyles} ${glowStyles} ${className ?? ''}`}>
+  <slot />
+</div>

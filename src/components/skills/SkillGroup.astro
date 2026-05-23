@@ -1,0 +1,30 @@
+---
+
+
+import SkillBadge from './SkillBadge.astro'
+
+export interface Props {
+  category: string
+  skills: Array<{
+    name: string
+    category: string
+  }>
+}
+
+const { category, skills } = Astro.props
+
+---
+
+<div>
+  <h3 class="mb-4 text-sm font-medium uppercase tracking-widest text-muted">
+    {category}
+  </h3>
+
+  <div class="flex flex-wrap gap-2">
+    {
+      skills.map((skill) => (
+        <SkillBadge skill={skill} />
+      ))
+    }
+  </div>
+</div>

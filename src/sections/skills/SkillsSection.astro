@@ -1,0 +1,48 @@
+---
+
+
+
+import Container from '../../components/ui/Container.astro'
+import SkillGroup from '../../components/skills/SkillGroup.astro'
+import type { SkillCategory } from '../../types/skill'
+import { SKILL_CATEGORY_LABELS, SKILL_CATEGORY_ORDER } from '../../types/skill'
+
+export interface Props {
+  skillsByCategory: Partial<Record<SkillCategory, Array<{ name: string; category: string }>>>
+}
+
+const { skillsByCategory } = Astro.props
+
+---
+
+<section id="skills" class="py-24 sm:py-32 border-t border-border">
+  <Container>
+    <div class="mb-16">
+      <p class="text-sm font-medium uppercase tracking-widest text-accent">
+        Expertise
+      </p>
+      <h2 class="mt-3 text-3xl font-bold sm:text-4xl">
+        Skills &amp; Technologies
+      </h2>
+      <p class="mt-4 max-w-lg text-muted">
+        The tools and technologies I use to bring ideas to life.
+      </p>
+    </div>
+
+    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        SKILL_CATEGORY_ORDER.map((category) => {
+          const skills = skillsByCategory[category]
+          if (!skills || skills.length === 0) return null
+
+          return (
+            <SkillGroup
+              category={SKILL_CATEGORY_LABELS[category]}
+              skills={skills}
+            />
+          )
+        })
+      }
+    </div>
+  </Container>
+</section>

@@ -1,17 +1,27 @@
 ---
 
+
+
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Hero from '../sections/hero/Hero.astro'
+import SelectedWork from '../sections/projects/SelectedWork.astro'
+import SkillsSection from '../sections/skills/SkillsSection.astro'
+import AboutSection from '../sections/about/AboutSection.astro'
+import ContactSection from '../sections/contact/ContactSection.astro'
+
+import { getFeaturedProjects, getSkillsByCategory } from '../lib/supabase/queries'
+import type { SkillCategory } from '../types/skill'
+
+const projects = await getFeaturedProjects()
+const skillsByCategory = await getSkillsByCategory()
+
+const skillsByCategoryTyped = skillsByCategory as Partial<Record<SkillCategory, Array<{ name: string; category: string }>>>
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Home" description="Full-stack developer crafting modern digital experiences.">
+  <Hero />
+  <SelectedWork projects={projects} />
+  <SkillsSection skillsByCategory={skillsByCategoryTyped} />
+  <AboutSection />
+  <ContactSection />
+</BaseLayout>

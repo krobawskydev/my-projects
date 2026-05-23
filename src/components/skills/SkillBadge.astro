@@ -1,0 +1,18 @@
+---
+
+
+export interface Props {
+  skill: {
+    name: string
+    category: string
+  }
+}
+
+const { skill } = Astro.props
+
+---
+
+<span class="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-3.5 py-2 text-sm text-muted transition-all duration-200 hover:border-accent/20 hover:text-foreground hover:bg-elevated">
+  <span class="h-1.5 w-1.5 rounded-full bg-accent/50" />
+  {skill.name}
+</span>

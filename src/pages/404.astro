@@ -1,0 +1,24 @@
+---
+
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+---
+
+<BaseLayout title="Not Found">
+  <section class="flex min-h-[80vh] items-center justify-center">
+    <div class="text-center">
+      <h1 class="text-8xl font-bold text-accent">404</h1>
+      <p class="mt-4 text-xl text-muted">Page not found</p>
+      <a
+        href="/"
+        class="mt-8 inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-background transition-all duration-200 hover:bg-accent/90"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12" />
+          <polyline points="12 19 5 12 12 5" />
+        </svg>
+        Go Home
+      </a>
+    </div>
+  </section>
+</BaseLayout>

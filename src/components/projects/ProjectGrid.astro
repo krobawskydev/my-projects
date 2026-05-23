@@ -1,0 +1,37 @@
+---
+
+
+import ProjectCard from './ProjectCard.astro'
+
+export interface Props {
+  projects: Array<{
+    title: string
+    slug: string
+    short_description: string
+    cover_image: string
+    featured: boolean
+  }>
+  columns?: 2 | 3
+}
+
+const { projects, columns = 2 } = Astro.props
+
+const gridCols = columns === 3
+  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+  : 'grid-cols-1 sm:grid-cols-2'
+
+---
+
+{
+  projects.length > 0 ? (
+    <div class={`grid ${gridCols} gap-6`}>
+      {
+        projects.map((project) => (
+          <ProjectCard project={project} />
+        ))
+      }
+    </div>
+  ) : (
+    <p class="text-center text-muted py-12">No projects to display yet.</p>
+  )
+}

@@ -1,0 +1,31 @@
+---
+
+
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Container from '../../components/ui/Container.astro'
+import ProjectGrid from '../../components/projects/ProjectGrid.astro'
+import { getProjects } from '../../lib/supabase/queries'
+
+const projects = await getProjects()
+---
+
+<BaseLayout title="Projects" description="A curated collection of projects I've built.">
+  <section class="pt-32 pb-24">
+    <Container>
+      <div class="mb-16">
+        <p class="text-sm font-medium uppercase tracking-widest text-accent">
+          Portfolio
+        </p>
+        <h1 class="mt-3 text-3xl font-bold sm:text-4xl">
+          All Projects
+        </h1>
+        <p class="mt-4 max-w-lg text-muted">
+          Every project I&apos;ve built, from concept to completion.
+        </p>
+      </div>
+
+      <ProjectGrid projects={projects} />
+    </Container>
+  </section>
+</BaseLayout>
