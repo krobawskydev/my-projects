@@ -2,13 +2,23 @@
 
 import Container from '../../components/ui/Container.astro'
 import ProjectGrid from '../../components/projects/ProjectGrid.astro'
-import type { Project } from '../../types/project'
+import type { Project, ProjectType } from '../../types/project'
+import { PROJECT_TYPE_LABELS } from '../../types/project'
 
 export interface Props {
   projects: Pick<Project, 'title' | 'slug' | 'short_description' | 'cover_image' | 'featured' | 'project_type' | 'role' | 'company' | 'duration'>[]
 }
 
 const { projects } = Astro.props
+const projectTypeOrder: ProjectType[] = ['enterprise', 'startup', 'freelance', 'personal', 'landing_page']
+
+const projectGroups = projectTypeOrder
+  .map((type) => ({
+    type,
+    label: PROJECT_TYPE_LABELS[type],
+    projects: projects.filter((project) => project.project_type === type),
+  }))
+  .filter((group) => group.projects.length > 0)
 
 ---
 
@@ -26,6 +36,21 @@ const { projects } = Astro.props
       </p>
     </div>
 
-    <ProjectGrid projects={projects} />
+    <div class="space-y-14">
+      {
+        projectGroups.map((group) => (
+          <div>
+            <div class="mb-6 flex items-center gap-3">
+              <h3 class="text-lg font-semibold tracking-tight">
+                {group.label}
+              </h3>
+              <span class="h-px flex-1 bg-border" />
+            </div>
+
+            <ProjectGrid projects={group.projects} />
+          </div>
+        ))
+      }
+    </div>
   </Container>
 </section>
