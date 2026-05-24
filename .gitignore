@@ -17,6 +17,9 @@ pnpm-debug.log*
 .env
 .env.production
 
+# local portfolio data
+content/
+
 # macOS-specific files
 .DS_Store
 

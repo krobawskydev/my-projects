@@ -1,16 +1,10 @@
 ---
 
-
 import ProjectCard from './ProjectCard.astro'
+import type { Project } from '../../types/project'
 
 export interface Props {
-  projects: Array<{
-    title: string
-    slug: string
-    short_description: string
-    cover_image: string
-    featured: boolean
-  }>
+  projects: Pick<Project, 'title' | 'slug' | 'short_description' | 'cover_image' | 'featured' | 'project_type' | 'role' | 'company' | 'duration'>[]
   columns?: 2 | 3
 }
 

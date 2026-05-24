@@ -1,10 +1,8 @@
 ---
 
-
-
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Hero from '../sections/hero/Hero.astro'
-import SelectedWork from '../sections/projects/SelectedWork.astro'
+import FeaturedProjects from '../sections/projects/FeaturedProjects.astro'
 import SkillsSection from '../sections/skills/SkillsSection.astro'
 import AboutSection from '../sections/about/AboutSection.astro'
 import ContactSection from '../sections/contact/ContactSection.astro'
@@ -12,15 +10,20 @@ import ContactSection from '../sections/contact/ContactSection.astro'
 import { getFeaturedProjects, getSkillsByCategory } from '../lib/supabase/queries'
 import type { SkillCategory } from '../types/skill'
 
-const projects = await getFeaturedProjects()
+const featuredProjects = await getFeaturedProjects()
 const skillsByCategory = await getSkillsByCategory()
 
 const skillsByCategoryTyped = skillsByCategory as Partial<Record<SkillCategory, Array<{ name: string; category: string }>>>
 ---
 
-<BaseLayout title="Home" description="Full-stack developer crafting modern digital experiences.">
+<BaseLayout
+  title="Home"
+  description="Senior Mobile & Fullstack Engineer. Building production systems at scale across fintech, enterprise SaaS, and modern mobile applications."
+>
   <Hero />
-  <SelectedWork projects={projects} />
+  {
+    featuredProjects.length > 0 && <FeaturedProjects projects={featuredProjects} />
+  }
   <SkillsSection skillsByCategory={skillsByCategoryTyped} />
   <AboutSection />
   <ContactSection />

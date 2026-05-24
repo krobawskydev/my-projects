@@ -15,6 +15,8 @@ export async function getProjects(): Promise<Project[]> {
   const { data, error } = await client
     .from('projects')
     .select('*')
+    .eq('published', true)
+    .order('display_order', { ascending: true })
     .order('created_at', { ascending: false })
 
   if (error) {
@@ -32,7 +34,9 @@ export async function getFeaturedProjects(): Promise<Project[]> {
   const { data, error } = await client
     .from('projects')
     .select('*')
+    .eq('published', true)
     .eq('featured', true)
+    .order('display_order', { ascending: true })
     .order('created_at', { ascending: false })
 
   if (error) {
@@ -41,24 +45,6 @@ export async function getFeaturedProjects(): Promise<Project[]> {
   }
 
   return data ?? []
-}
-
-export async function getProjectBySlug(slug: string): Promise<Project | null> {
-  const client = getClient()
-  if (!client) return null
-
-  const { data, error } = await client
-    .from('projects')
-    .select('*, project_skills(skill:skills(*))')
-    .eq('slug', slug)
-    .single()
-
-  if (error) {
-    console.error(`Error fetching project with slug "${slug}":`, error)
-    return null
-  }
-
-  return data
 }
 
 export async function getSkills(): Promise<Skill[]> {
@@ -101,6 +87,7 @@ export async function getAllProjectSlugs(): Promise<string[]> {
   const { data, error } = await client
     .from('projects')
     .select('slug')
+    .eq('published', true)
 
   if (error) {
     console.error('Error fetching project slugs:', error)
@@ -108,4 +95,40 @@ export async function getAllProjectSlugs(): Promise<string[]> {
   }
 
   return (data ?? []).map((p) => p.slug)
+}
+
+export async function getProjectBySlugWithSkills(slug: string): Promise<Project | null> {
+  const client = getClient()
+  if (!client) return null
+
+  const { data, error } = await client
+    .from('projects')
+    .select('*, project_skills(skill:skills(*))')
+    .eq('slug', slug)
+    .eq('published', true)
+    .single()
+
+  if (error) {
+    console.error(`Error fetching project with slug "${slug}":`, error)
+    return null
+  }
+
+  return mapProjectSkills(data)
+}
+
+type ProjectWithRelations = Project & {
+  project_skills?: Array<{
+    skill?: Skill | null
+  }>
+}
+
+function mapProjectSkills(project: ProjectWithRelations | null): Project | null {
+  if (!project) return null
+
+  return {
+    ...project,
+    skills: (project.project_skills ?? [])
+      .map((relation) => relation.skill)
+      .filter((skill): skill is Skill => Boolean(skill)),
+  }
 }

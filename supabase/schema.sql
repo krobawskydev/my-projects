@@ -1,3 +1,12 @@
+-- Create project_type enum
+CREATE TYPE project_type AS ENUM (
+  'enterprise',
+  'freelance',
+  'startup',
+  'personal',
+  'landing_page'
+);
+
 -- Create projects table
 CREATE TABLE projects (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -6,11 +15,20 @@ CREATE TABLE projects (
   short_description TEXT NOT NULL,
   content TEXT NOT NULL DEFAULT '',
   cover_image TEXT NOT NULL DEFAULT '',
-  gallery JSONB NOT NULL DEFAULT '[]'::jsonb,
+  gallery TEXT[] NOT NULL DEFAULT '{}',
   github_url TEXT NOT NULL DEFAULT '',
   live_url TEXT NOT NULL DEFAULT '',
   featured BOOLEAN NOT NULL DEFAULT false,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  project_type project_type NOT NULL DEFAULT 'personal',
+  role TEXT NOT NULL DEFAULT '',
+  company TEXT NOT NULL DEFAULT '',
+  duration TEXT NOT NULL DEFAULT '',
+  team_size INTEGER,
+  published BOOLEAN NOT NULL DEFAULT false,
+  display_order INTEGER NOT NULL DEFAULT 0,
+  highlights TEXT[] NOT NULL DEFAULT '{}',
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- Create skills table
@@ -22,9 +40,10 @@ CREATE TABLE skills (
     'language',
     'framework',
     'frontend',
+    'mobile',
     'backend',
     'database',
-    'mobile',
+    'architecture',
     'cloud',
     'tool'
   )),
@@ -58,34 +77,28 @@ CREATE POLICY "Allow public read access to project_skills"
   ON project_skills FOR SELECT
   USING (true);
 
--- Create indexes for performance
+-- Indexes for performance
+CREATE INDEX idx_projects_published ON projects(published) WHERE published = true;
 CREATE INDEX idx_projects_featured ON projects(featured) WHERE featured = true;
 CREATE INDEX idx_projects_slug ON projects(slug);
+CREATE INDEX idx_projects_project_type ON projects(project_type);
+CREATE INDEX idx_projects_display_order ON projects(display_order);
 CREATE INDEX idx_projects_created_at ON projects(created_at DESC);
 CREATE INDEX idx_skills_category ON skills(category);
 CREATE INDEX idx_skills_slug ON skills(slug);
 CREATE INDEX idx_project_skills_project_id ON project_skills(project_id);
 CREATE INDEX idx_project_skills_skill_id ON project_skills(skill_id);
 
--- Insert sample data
-INSERT INTO skills (name, slug, category, icon) VALUES
-  ('TypeScript', 'typescript', 'language', 'typescript'),
-  ('JavaScript', 'javascript', 'language', 'javascript'),
-  ('Python', 'python', 'language', 'python'),
-  ('Go', 'go', 'language', 'go'),
-  ('React', 'react', 'frontend', 'react'),
-  ('Next.js', 'nextjs', 'framework', 'nextjs'),
-  ('Astro', 'astro', 'framework', 'astro'),
-  ('TailwindCSS', 'tailwindcss', 'frontend', 'tailwindcss'),
-  ('Node.js', 'nodejs', 'backend', 'nodejs'),
-  ('PostgreSQL', 'postgresql', 'database', 'postgresql'),
-  ('Supabase', 'supabase', 'backend', 'supabase'),
-  ('Docker', 'docker', 'tool', 'docker'),
-  ('AWS', 'aws', 'cloud', 'aws'),
-  ('Vercel', 'vercel', 'cloud', 'vercel'),
-  ('Git', 'git', 'tool', 'git'),
-  ('Figma', 'figma', 'tool', 'figma'),
-  ('Swift', 'swift', 'language', 'swift'),
-  ('SwiftUI', 'swiftui', 'mobile', 'swiftui'),
-  ('Prisma', 'prisma', 'backend', 'prisma'),
-  ('tRPC', 'trpc', 'backend', 'trpc');
+-- Function to auto-update updated_at
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER set_updated_at
+  BEFORE UPDATE ON projects
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
