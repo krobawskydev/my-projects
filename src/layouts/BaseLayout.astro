@@ -10,7 +10,20 @@ export interface Props {
   image?: string
 }
 
-const { title, description = 'Senior Mobile & Fullstack Engineer. Building production systems at scale across fintech, enterprise SaaS, and modern mobile applications.', image } = Astro.props
+const defaultDescription = 'Portfolio of Ricardo Berrospi, a senior mobile and fullstack engineer building scalable fintech, enterprise SaaS, and production mobile systems.'
+const defaultImage = '/brand/logo.svg'
+
+const {
+  title,
+  description = defaultDescription,
+  image = defaultImage,
+} = Astro.props
+
+const siteName = 'krobawsky.dev'
+const author = 'Ricardo Berrospi Quispe'
+const pageTitle = `${title} — ${siteName}`
+const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).toString()
+const imageUrl = new URL(image || defaultImage, Astro.url.origin).toString()
 
 ---
 
@@ -21,20 +34,26 @@ const { title, description = 'Senior Mobile & Fullstack Engineer. Building produ
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>{title} — krobawsky.dev</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={`${title} — krobawsky.dev`} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    {image && <meta property="og:image" content={image} />}
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={`${siteName} logo`} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${title} — krobawsky.dev`} />
+    <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
-    {image && <meta name="twitter:image" content={image} />}
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={`${siteName} logo`} />
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/brand/logo.svg" />
     <link rel="icon" href="/favicon.ico" />
   </head>
   <body class="min-h-screen bg-background text-foreground antialiased">
