@@ -20,6 +20,20 @@ const projectGroups = projectTypeOrder
   }))
   .filter((group) => group.projects.length > 0)
 
+let hasIndependentAnchor = false
+const projectSections = projectGroups.map((group) => {
+  if (group.type === 'enterprise') {
+    return { ...group, anchorId: 'enterprise' }
+  }
+
+  if (!hasIndependentAnchor) {
+    hasIndependentAnchor = true
+    return { ...group, anchorId: 'independent' }
+  }
+
+  return { ...group, anchorId: undefined }
+})
+
 ---
 
 <section id="featured" class="py-24 sm:py-32">
@@ -38,8 +52,8 @@ const projectGroups = projectTypeOrder
 
     <div class="space-y-14">
       {
-        projectGroups.map((group) => (
-          <div>
+        projectSections.map((group) => (
+          <div id={group.anchorId} class="scroll-mt-24">
             <div class="mb-6 flex items-center gap-3">
               <h3 class="text-lg font-semibold tracking-tight">
                 {group.label}
