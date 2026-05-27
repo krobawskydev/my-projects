@@ -51,6 +51,8 @@ export interface Skill {
   slug: string
   category: SkillCategory
   icon: string
+  display: boolean
+  order: number
   created_at: string
 }
 

@@ -20,6 +20,8 @@ type SkillSeed = {
   slug: string
   category: SkillCategory
   icon?: string
+  display?: boolean
+  order?: number
 }
 
 type SkillSeedFile = {
@@ -54,6 +56,8 @@ async function main() {
     slug: skill.slug,
     category: skill.category,
     icon: skill.icon ?? '',
+    display: skill.display ?? true,
+    order: skill.order ?? 0,
   }))
 
   if (skills.length === 0) {

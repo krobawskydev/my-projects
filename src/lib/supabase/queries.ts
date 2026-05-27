@@ -54,6 +54,9 @@ export async function getSkills(): Promise<Skill[]> {
   const { data, error } = await client
     .from('skills')
     .select('*')
+    .eq('display', true)
+    .order('category', { ascending: true })
+    .order('order', { ascending: true })
     .order('name', { ascending: true })
 
   if (error) {

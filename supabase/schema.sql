@@ -48,6 +48,8 @@ CREATE TABLE skills (
     'tool'
   )),
   icon TEXT NOT NULL DEFAULT '',
+  display BOOLEAN NOT NULL DEFAULT true,
+  "order" INTEGER NOT NULL DEFAULT 0,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
@@ -86,6 +88,8 @@ CREATE INDEX idx_projects_display_order ON projects(display_order);
 CREATE INDEX idx_projects_created_at ON projects(created_at DESC);
 CREATE INDEX idx_skills_category ON skills(category);
 CREATE INDEX idx_skills_slug ON skills(slug);
+CREATE INDEX idx_skills_display ON skills(display) WHERE display = true;
+CREATE INDEX idx_skills_category_order ON skills(category, "order", name);
 CREATE INDEX idx_project_skills_project_id ON project_skills(project_id);
 CREATE INDEX idx_project_skills_skill_id ON project_skills(skill_id);
 
