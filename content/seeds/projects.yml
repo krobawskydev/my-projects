@@ -1,0 +1,655 @@
+# Default-language content stays in the existing top-level fields.
+# Locale overrides live under `translations.<locale>`, for example:
+# translations:
+#   es:
+#     title: Titulo
+#     short_description: Resumen corto
+#     content: Texto largo
+#     role: Rol
+#     company: Empresa
+#     duration: Duracion
+#     highlights:
+#       - Punto destacado
+projects:
+  - title: Banca Movil BCP
+    slug: banca-movil-bcp
+    short_description: Mobile banking application work for one of Peru's leading banks, focused on digital payments and scalable modular iOS flows.
+    content: >
+      Banca Movil BCP is the mobile banking application of one of the leading
+      banks in Peru. The project involved development and maintenance of iOS
+      features using Swift 5 and UIKit, work on a modular repository composed
+      of a main application and reusable submodules, and delivery of digital
+      payment and financial operation flows within the SDPO team.
+    cover_image: https://yt3.googleusercontent.com/6OWD-UzDY_tY3sriVivgIZZ6S68G1x6La0YQht37QfbMq4pk3-5paL260zQ5cOs-JXLvrfbj=s900-c-k-c0x00ffffff-no-rj
+    gallery: []
+    github_url: ''
+    live_url: ''
+    featured: true
+    project_type: enterprise
+    role: Senior iOS Developer
+    company: NTT DATA
+    duration: 2022 - 2024
+    team_size:
+    published: true
+    display_order: 1
+    highlights:
+      - Developed and maintained iOS features using Swift 5 and UIKit.
+      - Worked on a modular repository with a main app and reusable submodules.
+      - Built independent modules for cross-cutting banking flows.
+      - Participated in the SDPO team focused on digital payments and financial operations.
+      - Implemented VIPER plus Coordinator for separation of concerns and decoupled navigation.
+      - Built complex UIKit interfaces with Auto Layout and reusable custom components.
+      - Integrated REST APIs documented in Swagger UI.
+      - Applied SOLID principles, unit testing, and code quality practices with SonarQube.
+      - Collaborated under Scrum with QA, backend, architects, and product owners.
+      - Managed Bitbucket workflows, Jenkins pipelines, IPA generation, and Confluence documentation.
+    translations:
+      es:
+        title: Banca Movil BCP
+        short_description: Trabajo en la aplicacion de banca movil de uno de los principales bancos del Peru, enfocado en pagos digitales y flujos iOS modulares y escalables.
+        content: >
+          Banca Movil BCP es la aplicacion de banca movil de uno de los
+          principales bancos del Peru. El proyecto incluyo desarrollo y
+          mantenimiento de funcionalidades iOS usando Swift 5 y UIKit,
+          trabajo sobre un repositorio modular compuesto por una aplicacion
+          principal y submodulos reutilizables, y entrega de flujos de pagos
+          digitales y operaciones financieras dentro del equipo SDPO.
+        role: Desarrollador iOS Senior
+        company: NTT DATA
+        duration: 2022 - 2024
+        highlights:
+          - Desarrollo y mantenimiento de funcionalidades iOS usando Swift 5 y UIKit.
+          - Trabajo sobre un repositorio modular con una aplicacion principal y submodulos reutilizables.
+          - Construccion de modulos independientes para flujos transversales de banca.
+          - Participacion en el equipo SDPO enfocado en pagos digitales y operaciones financieras.
+          - Implementacion de VIPER junto con Coordinator para separacion de responsabilidades y navegacion desacoplada.
+          - Construccion de interfaces complejas con UIKit, Auto Layout y componentes custom reutilizables.
+          - Integracion de APIs REST documentadas en Swagger UI.
+          - Aplicacion de principios SOLID, pruebas unitarias y calidad de codigo con SonarQube.
+          - Trabajo colaborativo bajo Scrum con QA, backend, arquitectos y product owners.
+          - Gestion de Bitbucket, pipelines en Jenkins, generacion de IPAs y documentacion en Confluence.
+    technologies:
+      - Swift
+      - UIKit
+      - iOS
+      - VIPER
+      - REST APIs
+      - Jira
+      - Confluence
+      - Jenkins
+      - SonarQube
+      - Bitbucket
+      - Xcode
+
+  - title: Caja Huancayo
+    slug: caja-huancayo
+    short_description: Native iOS work for the technological modernization of a financial application, migrating from a web-exported solution to a modern mobile experience.
+    content: >
+      Caja Huancayo is a technological modernization project for a financial
+      application, migrating a previous web-exported solution for iOS and
+      Android into a native mobile application while preserving a shared
+      foundation through Kotlin Multiplatform. The work focused on native iOS
+      development with SwiftUI, better mobile UX, secure banking flows, and
+      iterative collaboration with the client.
+    cover_image: https://yt3.googleusercontent.com/ytc/AIdro_lLpmdnfHAGcBbQWZjpKtnR5Y9_6DdkS2liWcdlEAw9Ng=s900-c-k-c0x00ffffff-no-rj
+    gallery: []
+    github_url: ''
+    live_url: ''
+    featured: true
+    project_type: enterprise
+    role: Senior iOS Developer
+    company: Moventi
+    duration: 2025 - Present
+    team_size:
+    published: true
+    display_order: 2
+    highlights:
+      - Developed the native iOS application using SwiftUI.
+      - Reused Data and Domain layers across iOS and Android with Kotlin Multiplatform.
+      - Participated in the functional migration from a hybrid web app to a native mobile solution.
+      - Improved UI and UX according to modern mobile and financial product standards.
+      - Integrated REST APIs for banking operations.
+      - Applied security best practices aligned with the OWASP Top 10.
+      - Collaborated frequently with the client to refine user stories and define requirements.
+      - Deployed and validated builds through TestFlight.
+      - Worked under Scrum with iterative delivery and continuous feedback.
+    translations:
+      es:
+        title: Caja Huancayo
+        short_description: Trabajo iOS nativo para la modernizacion tecnologica de una aplicacion financiera, migrando una solucion exportada desde web hacia una experiencia movil moderna.
+        content: >
+          Caja Huancayo es un proyecto de modernizacion tecnologica de una
+          aplicacion financiera, migrando una solucion previa basada en web y
+          exportada a iOS y Android hacia una aplicacion movil nativa,
+          manteniendo una base compartida mediante Kotlin Multiplatform. El
+          trabajo se enfoco en desarrollo iOS nativo con SwiftUI, mejora de la
+          experiencia movil, flujos bancarios seguros y colaboracion iterativa
+          con el cliente.
+        role: Desarrollador iOS Senior
+        company: Moventi
+        duration: 2025 - actualidad
+        highlights:
+          - Desarrollo de la aplicacion iOS nativa utilizando SwiftUI.
+          - Reutilizacion de las capas Data y Domain entre iOS y Android mediante Kotlin Multiplatform.
+          - Participacion activa en la migracion funcional desde una app web hibrida hacia una solucion movil nativa.
+          - Mejora significativa de UI y UX alineada a estandares moviles modernos y experiencia financiera.
+          - Integracion de APIs REST para operaciones bancarias.
+          - Aplicacion de buenas practicas de seguridad alineadas con el OWASP Top 10.
+          - Participacion frecuente en reuniones con el cliente para refinar historias de usuario y requerimientos.
+          - Despliegue y validacion de versiones mediante TestFlight.
+          - Trabajo bajo Scrum con entregas iterativas y feedback continuo.
+    technologies:
+      - Swift
+      - SwiftUI
+      - iOS
+      - Clean Architecture
+      - Firebase
+      - Figma
+      - REST APIs
+      - TestFlight
+      - Xcode
+      - Jira
+      - Bitbucket
+      - Confluence
+
+  - title: Caja Maynas Enterprise
+    slug: caja-maynas-enterprise
+    short_description: Enterprise banking mobile development using modern native iOS practices.
+    content: >
+      Caja Maynas enterprise work focuses on native mobile banking development
+      with modern iOS implementation, shared mobile layers, and reliable
+      production delivery for financial systems.
+    cover_image: ''
+    gallery: []
+    github_url: ''
+    live_url: ''
+    featured: false
+    project_type: enterprise
+    role: Senior iOS Developer
+    company: Moventi
+    duration: 2025 - Present
+    team_size:
+    published: false
+    display_order: 3
+    highlights:
+      - Built native mobile features for enterprise banking.
+      - Used modern iOS patterns for maintainable delivery.
+      - Supported production deployment workflows.
+    translations:
+      es:
+        title: Caja Maynas Enterprise
+        short_description: Desarrollo movil bancario empresarial usando practicas nativas modernas de iOS.
+        content: >
+          El trabajo enterprise para Caja Maynas se enfoca en desarrollo
+          bancario movil nativo, con implementacion moderna en iOS, capas
+          moviles compartidas y entrega confiable para sistemas financieros.
+        role: Desarrollador iOS Senior
+        company: Moventi
+        duration: 2025 - Actualidad
+        highlights:
+          - Construccion de funcionalidades moviles nativas para banca empresarial.
+          - Uso de patrones modernos de iOS para una entrega mantenible.
+          - Soporte a flujos de despliegue en produccion.
+    technologies:
+      - Swift
+      - iOS
+      - Kotlin Multiplatform
+      - Git
+
+  - title: Redcol
+    slug: redcol
+    short_description: Work in Gasonet application for hydrocarbon operations management with client and admin modules, including geospatial asset visibility and operational routes.
+    content: >
+      Gasonet is an iOS application for hydrocarbon operations management,
+      built for a Peruvian company specialized in fuel supply and control. The project included client and
+      administrative modules, geospatial visualization of assets and
+      operational routes, and a modern mobile architecture designed for
+      scalability and maintainability.
+    cover_image: 'https://landing.redcol.net/img/logo-og.png'
+    gallery: []
+    github_url: ''
+    live_url: ''
+    featured: true
+    project_type: enterprise
+    role: Senior iOS Developer
+    company: Moventi
+    duration: 2025
+    team_size:
+    published: true
+    display_order: 4
+    highlights:
+      - Created the iOS project from scratch using SwiftUI.
+      - Defined and implemented MVVM plus Clean Architecture.
+      - Reused Data and Domain layers with Kotlin Multiplatform.
+      - Integrated REST APIs for operational and administrative workflows.
+      - Implemented advanced Google Maps features for assets and operational routes.
+      - Applied SOLID principles, design patterns, and deployment workflows with TestFlight.
+      - Provided technical leadership and mentoring for a junior iOS trainee.
+      - Worked collaboratively under Scrum practices.
+    translations:
+      es:
+        title: Redcol
+        short_description: Trabajo en la aplicación Gasonet para la gestion de operaciones de hidrocarburos, con modulos para clientes y administracion, incluyendo visualizacion geoespacial de activos y rutas operativas.
+        content: >
+          Gasonet es una aplicacion iOS para la gestion de operaciones de
+          hidrocarburos, construida para una empresa peruana especializada en
+          suministro y control de combustible. El proyecto incluyo modulos para clientes y administracion,
+          visualizacion geoespacial de activos y rutas operativas, y una
+          arquitectura movil moderna orientada a escalabilidad y
+          mantenibilidad.
+        role: Desarrollador iOS Senior
+        company: Moventi
+        duration: 2025
+        highlights:
+          - Creacion del proyecto iOS desde cero utilizando SwiftUI.
+          - Definicion e implementacion de MVVM junto con Clean Architecture.
+          - Reutilizacion de las capas Data y Domain mediante Kotlin Multiplatform.
+          - Integracion de APIs REST para flujos operativos y administrativos.
+          - Implementacion avanzada de Google Maps para activos y rutas operativas.
+          - Aplicacion de principios SOLID, patrones de diseño y despliegues con TestFlight.
+          - Liderazgo tecnico y mentoria para un practicante iOS.
+          - Trabajo colaborativo bajo metodologia Scrum.
+    technologies:
+      - Swift
+      - SwiftUI
+      - iOS
+      - MVVM
+      - Clean Architecture
+      - Google Maps SDK
+      - REST APIs
+      - TestFlight
+      - Xcode
+      - Jira
+      - Bitbucket
+      - Confluence
+      - Git
+
+  - title: Plataforma Magi
+    slug: plataforma-magi
+    short_description: Backend services for financial platform workflows using microservice-oriented delivery.
+    content: >
+      Plataforma Magi involved backend development for financial platform
+      services, with emphasis on service integration, maintainable APIs, and
+      enterprise delivery practices.
+    cover_image: 'https://i.ytimg.com/vi/V4vw7c_PfTQ/maxresdefault.jpg'
+    gallery: []
+    github_url: ''
+    live_url: ''
+    featured: true
+    project_type: enterprise
+    role: Backend Semi Senior Developer
+    company: Tismart
+    duration: 2021
+    team_size:
+    published: true
+    display_order: 5
+    highlights:
+      - Developed backend services for financial workflows.
+      - Supported API integration and platform delivery.
+      - Worked within enterprise backend development practices.
+    translations:
+      es:
+        title: Plataforma Magi
+        short_description: Servicios backend para flujos de plataforma financiera con enfoque en microservicios.
+        content: >
+          Plataforma Magi incluyo desarrollo backend para servicios de una
+          plataforma financiera, con enfasis en integracion de servicios, APIs
+          mantenibles y practicas de entrega empresarial.
+        role: Desarrollador Backend Semi Senior
+        company: Tismart
+        duration: 2021
+        highlights:
+          - Desarrollo de servicios backend para flujos financieros.
+          - Soporte a integracion de APIs y entrega de plataforma.
+          - Trabajo dentro de practicas empresariales de backend.
+    technologies:
+      - Node.js
+      - NestJS
+      - PostgreSQL
+      - Git
+
+  - title: Plataforma Distriluz
+    slug: plataforma-distriluz
+    short_description: Enterprise web and mobile system delivery for operational workflows.
+    content: >
+      Plataforma Distriluz involved fullstack development for enterprise web
+      and mobile systems, combining frontend delivery with backend services and
+      database-backed workflows.
+    cover_image: ''
+    gallery: []
+    github_url: ''
+    live_url: ''
+    featured: false
+    project_type: enterprise
+    role: Full Stack Developer
+    company: Canvia
+    duration: 2019 - 2021
+    team_size:
+    published: false
+    display_order: 6
+    highlights:
+      - Built enterprise web and mobile system features.
+      - Supported backend services and data-driven workflows.
+      - Delivered functionality for operational enterprise use cases.
+    translations:
+      es:
+        title: Plataforma Distriluz
+        short_description: Entrega de sistema web y movil empresarial para flujos operativos.
+        content: >
+          Plataforma Distriluz incluyo desarrollo fullstack para sistemas web
+          y moviles empresariales, combinando frontend con servicios backend y
+          flujos soportados por base de datos.
+        role: Desarrollador Full Stack
+        company: Canvia
+        duration: 2019 - 2021
+        highlights:
+          - Construccion de funcionalidades para sistemas web y moviles empresariales.
+          - Soporte a servicios backend y flujos guiados por datos.
+          - Entrega de funcionalidad para casos de uso operativos empresariales.
+    technologies:
+      - Angular
+      - TypeScript
+      - .NET Core
+      - SQL Server
+
+  - title: Sportyeah
+    slug: sportyeah
+    short_description: Sports platform with a cross-platform mobile app and backend services.
+    content: >
+      Sportyeah is a sports platform built around a cross-platform mobile
+      experience, backend services, and database integrations for product
+      workflows.
+    cover_image: https://i.ytimg.com/vi/WiVg5iI9c_c/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGBogTCh_MA8=&rs=AOn4CLBc89i-oSo4Bk7C9x97bl6w3smNxQ
+    gallery: []
+    github_url: ''
+    live_url: ''
+    featured: true
+    project_type: freelance
+    role: Fullstack Mobile Developer
+    company: Sportyeah
+    duration: 12 months
+    team_size:
+    published: true
+    display_order: 7
+    highlights:
+      - Built Flutter mobile features for the product experience.
+      - Supported NestJS backend services.
+      - Integrated MongoDB-backed workflows.
+    translations:
+      es:
+        title: Sportyeah
+        short_description: Plataforma deportiva con app movil multiplataforma y servicios backend.
+        content: >
+          Sportyeah es una plataforma deportiva construida alrededor de una
+          experiencia movil multiplataforma, servicios backend e integraciones
+          de base de datos para los flujos del producto.
+        role: Desarrollador Mobile Fullstack
+        company: Sportyeah
+        duration: 12 meses
+        highlights:
+          - Construccion de funcionalidades moviles en Flutter para la experiencia del producto.
+          - Soporte a servicios backend con NestJS.
+          - Integracion de flujos respaldados por MongoDB.
+    technologies:
+      - Flutter
+      - Dart
+      - NestJS
+      - TypeScript
+      - MongoDB
+
+  - title: Caja Maynas
+    slug: caja-maynas
+    short_description: Banking mobile and web work focused on financial operations and secure user flows.
+    content: >
+      Caja Maynas included mobile and web delivery for banking workflows, with
+      a focus on native mobile implementation, architecture, integrations, and
+      reliable financial user experiences.
+    cover_image: ''
+    gallery: []
+    github_url: ''
+    live_url: ''
+    featured: false
+    project_type: freelance
+    role: Mobile & Web Developer
+    company: Caja Maynas
+    duration: 6 months
+    team_size:
+    published: false
+    display_order: 8
+    highlights:
+      - Built native mobile features for banking workflows.
+      - Supported web interfaces and integrations.
+      - Applied VIPER architecture for maintainable delivery.
+    translations:
+      es:
+        title: Caja Maynas
+        short_description: Trabajo movil y web bancario enfocado en operaciones financieras y flujos seguros.
+        content: >
+          Caja Maynas incluyo entrega movil y web para flujos bancarios, con
+          foco en implementacion nativa, arquitectura, integraciones y
+          experiencias financieras confiables para usuarios.
+        role: Desarrollador Mobile y Web
+        company: Caja Maynas
+        duration: 6 meses
+        highlights:
+          - Construccion de funcionalidades moviles nativas para flujos bancarios.
+          - Soporte a interfaces web e integraciones.
+          - Aplicacion de arquitectura VIPER para una entrega mantenible.
+    technologies:
+      - Swift
+      - VIPER
+      - Angular
+      - TypeScript
+
+  - title: Viexvi
+    slug: viexvi
+    short_description: Tourism services platform with mobile and web applications.
+    content: >
+      Viexvi is a tourism services platform delivered across mobile and web,
+      combining Flutter mobile development with React web implementation.
+    cover_image: ''
+    gallery: []
+    github_url: ''
+    live_url: ''
+    featured: false
+    project_type: freelance
+    role: Fullstack Developer
+    company: Viexvi
+    duration: 8 months
+    team_size:
+    published: true
+    display_order: 9
+    highlights:
+      - Built Flutter mobile application features.
+      - Developed React web interfaces.
+      - Used MVC patterns for application structure.
+    translations:
+      es:
+        title: Viexvi
+        short_description: Plataforma de servicios turisticos con aplicaciones moviles y web.
+        content: >
+          Viexvi es una plataforma de servicios turisticos entregada en mobile
+          y web, combinando desarrollo movil con Flutter e implementacion web
+          con React.
+        role: Desarrollador Fullstack
+        company: Viexvi
+        duration: 8 meses
+        highlights:
+          - Construccion de funcionalidades para la aplicacion movil en Flutter.
+          - Desarrollo de interfaces web con React.
+          - Uso de patrones MVC para estructurar la aplicacion.
+    technologies:
+      - Flutter
+      - Dart
+      - React
+      - JavaScript
+      - MVC
+
+  - title: EDM Peru
+    slug: edm-peru
+    short_description: Electronic music platform for news, interviews, events, and community content.
+    content: >
+      EDM Peru is a long-running electronic music platform focused on publishing
+      editorial content, event coverage, interviews, and community updates.
+    cover_image: https://edmperu.com/logo/edmperu.jpeg
+    gallery: []
+    github_url: ''
+    live_url: https://edmperu.com/
+    featured: true
+    project_type: personal
+    role: Fullstack Developer
+    company: EDM Peru
+    duration: Ongoing
+    team_size:
+    published: true
+    display_order: 10
+    highlights:
+      - Built a responsive editorial experience for music content.
+      - Designed a content workflow for publishing and community updates.
+      - Deployed the platform on modern web infrastructure.
+    translations:
+      es:
+        title: EDM Peru
+        short_description: Plataforma de musica electronica para noticias, entrevistas, eventos y comunidad.
+        content: >
+          EDM Peru es una plataforma de larga trayectoria enfocada en publicar
+          contenido editorial, cobertura de eventos, entrevistas y novedades
+          para la comunidad de musica electronica.
+        role: Desarrollador Fullstack
+        company: EDM Peru
+        duration: En curso
+        highlights:
+          - Construccion de una experiencia editorial responsive para contenido musical.
+          - Diseño de un flujo de contenido para publicaciones y novedades de la comunidad.
+          - Despliegue de la plataforma sobre infraestructura web moderna.
+    technologies:
+      - Next.js
+      - TypeScript
+      - Supabase
+      - Vercel
+
+  - title: Verzus
+    slug: verzus
+    short_description: Competitive Dota 2 platform for teams, tournaments, matches, and virtual currency.
+    content: >
+      Verzus is a competitive gaming platform where teams can create matches,
+      manage tournaments, and participate in virtual-currency based experiences.
+    cover_image: https://verzuspe.com/og-image.png?v=2
+    gallery: []
+    github_url: ''
+    live_url: https://verzuspe.com/
+    featured: true
+    project_type: startup
+    role: Fullstack Developer
+    company: Verzus
+    duration: Ongoing
+    team_size:
+    published: true
+    display_order: 11
+    highlights:
+      - Implemented tournament and match management flows.
+      - Built frontend and backend features across the product.
+      - Integrated notifications and deployment workflows.
+    translations:
+      es:
+        title: Verzus
+        short_description: Plataforma competitiva de Dota 2 para equipos, torneos, partidas y moneda virtual.
+        content: >
+          Verzus es una plataforma de gaming competitivo donde los equipos
+          pueden crear partidas, gestionar torneos y participar en
+          experiencias basadas en moneda virtual.
+        role: Desarrollador Fullstack
+        company: Verzus
+        duration: En curso
+        highlights:
+          - Implementacion de flujos para gestion de torneos y partidas.
+          - Construccion de funcionalidades frontend y backend en todo el producto.
+          - Integracion de notificaciones y flujos de despliegue.
+    technologies:
+      - Next.js
+      - NestJS
+      - MongoDB
+      - Digital Ocean
+      - Firebase Cloud Messaging
+
+  - title: Xigma Landing
+    slug: xigma-landing
+    short_description: Professional landing page for the Xigma USA import program.
+    content: >
+      Xigma Landing is a focused landing page for the Xigma USA import program,
+      built with a responsive interface and performance-minded delivery.
+    cover_image: https://xigma-import-landing.vercel.app/logo/degradado.jpeg
+    gallery: []
+    github_url: ''
+    live_url: https://xigma-import-landing.vercel.app/
+    featured: true
+    project_type: landing_page
+    role: Frontend Developer
+    company: Xigma
+    duration: ''
+    team_size:
+    published: true
+    display_order: 12
+    highlights:
+      - Built the landing page interface.
+      - Implemented responsive layouts.
+      - Optimized delivery for production hosting.
+    translations:
+      es:
+        title: Xigma Landing
+        short_description: Landing page profesional para el programa de importacion de Xigma USA.
+        content: >
+          Xigma Landing es una landing page enfocada en el programa de
+          importacion de Xigma USA, construida con una interfaz responsive y
+          una entrega orientada al rendimiento.
+        role: Desarrollador Frontend
+        company: Xigma
+        duration: ''
+        highlights:
+          - Construccion de la interfaz de la landing page.
+          - Implementacion de layouts responsive.
+          - Optimizacion de la entrega para hosting en produccion.
+    technologies:
+      - Astro
+      - Vercel
+
+  - title: Xigma VSL
+    slug: xigma-vsl
+    short_description: Video sales letter landing page designed for conversion and engagement.
+    content: >
+      Xigma VSL is a video sales letter landing page designed to support
+      conversion-focused messaging, engagement, and responsive delivery.
+    cover_image: https://vsl-xigma-landing.vercel.app/images/logo/xigma-usa.png
+    gallery: []
+    github_url: ''
+    live_url: https://vsl-xigma-landing.vercel.app/
+    featured: true
+    project_type: landing_page
+    role: Frontend Developer
+    company: Xigma
+    duration: ''
+    team_size:
+    published: true
+    display_order: 13
+    highlights:
+      - Implemented the VSL landing page experience.
+      - Tuned the UI around conversion-focused content.
+      - Prepared the page for production deployment.
+    translations:
+      es:
+        title: Xigma VSL
+        short_description: Landing page tipo video sales letter diseñada para conversion y engagement.
+        content: >
+          Xigma VSL es una landing page tipo video sales letter diseñada para
+          soportar mensajes orientados a conversion, engagement y entrega
+          responsive.
+        role: Desarrollador Frontend
+        company: Xigma
+        duration: ''
+        highlights:
+          - Implementacion de la experiencia VSL en la landing page.
+          - Ajuste de la UI alrededor de contenido orientado a conversion.
+          - Preparacion de la pagina para despliegue en produccion.
+    technologies:
+      - Astro
+      - Vercel

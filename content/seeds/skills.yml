@@ -1,0 +1,274 @@
+skills:
+  # Languages
+  - name: Swift
+    slug: swift
+    category: language
+    icon: swift
+    display: true
+    order: 1
+  - name: TypeScript
+    slug: typescript
+    category: language
+    icon: typescript
+    display: true
+    order: 2
+  - name: JavaScript
+    slug: javascript
+    category: language
+    icon: javascript
+    display: true
+    order: 3
+  - name: Kotlin
+    slug: kotlin
+    category: language
+    icon: kotlin
+    display: true
+    order: 4
+  - name: Dart
+    slug: dart
+    category: language
+    icon: dart
+    display: true
+    order: 5
+  - name: C#
+    slug: csharp
+    category: language
+    icon: csharp
+    display: false
+    order: 6
+
+  # Mobile
+  - name: iOS
+    slug: ios
+    category: mobile
+    icon: apple
+    display: true
+    order: 1
+  - name: Android
+    slug: android
+    category: mobile
+    icon: android
+    display: true
+    order: 2
+  - name: Kotlin Multiplatform
+    slug: kotlin-multiplatform
+    category: mobile
+    icon: kotlin
+    display: true
+    order: 3
+  - name: Flutter
+    slug: flutter
+    category: mobile
+    icon: flutter
+    display: true
+    order: 4
+
+  # Frontend
+  - name: React
+    slug: react
+    category: frontend
+    icon: react
+    display: true
+    order: 1
+  - name: Next.js
+    slug: nextjs
+    category: frontend
+    icon: nextjs
+    display: true
+    order: 2
+  - name: Angular
+    slug: angular
+    category: frontend
+    icon: angular
+    display: true
+    order: 3
+  - name: Astro
+    slug: astro
+    category: frontend
+    icon: astro
+    display: true
+    order: 4
+
+  # Backend
+  - name: Node.js
+    slug: nodejs
+    category: backend
+    icon: nodejs
+    display: true
+    order: 1
+  - name: NestJS
+    slug: nestjs
+    category: backend
+    icon: nestjs
+    display: true
+    order: 2
+  - name: ExpressJS
+    slug: expressjs
+    category: backend
+    icon: express
+    display: true
+    order: 3
+  - name: .NET Core
+    slug: dotnet-core
+    category: backend
+    icon: dotnet
+    display: true
+    order: 4
+
+  # Architecture
+  - name: Clean Architecture
+    slug: clean-architecture
+    category: architecture
+    icon: clean-architecture
+    display: true
+    order: 1
+  - name: MVVM
+    slug: mvvm
+    category: architecture
+    icon: mvvm
+    display: true
+    order: 2
+  - name: MVC
+    slug: mvc
+    category: architecture
+    icon: mvc
+    display: true
+    order: 3
+  - name: VIPER
+    slug: viper
+    category: architecture
+    icon: viper
+    display: true
+    order: 4
+
+  # Databases
+  - name: PostgreSQL
+    slug: postgresql
+    category: database
+    icon: postgresql
+    display: true
+    order: 1
+  - name: MongoDB
+    slug: mongodb
+    category: database
+    icon: mongodb
+    display: true
+    order: 2
+  - name: SQL Server
+    slug: sql-server
+    category: database
+    icon: microsoft
+    display: true
+    order: 3
+  - name: MySQL
+    slug: mysql
+    category: database
+    icon: mysql
+    display: true
+    order: 4
+  - name: SQLite
+    slug: sqlite
+    category: database
+    icon: sqlite
+    display: true
+    order: 5
+
+  # Cloud
+  - name: AWS
+    slug: aws
+    category: cloud
+    icon: aws
+    display: true
+    order: 1
+  - name: Vercel
+    slug: vercel
+    category: cloud
+    icon: vercel
+    display: true
+    order: 2
+  - name: Digital Ocean
+    slug: digital-ocean
+    category: cloud
+    icon: digital-ocean
+    display: true
+    order: 3
+  - name: Firebase
+    slug: firebase
+    category: cloud
+    icon: firebase
+    display: true
+    order: 4
+  - name: Supabase
+    slug: supabase
+    category: cloud
+    icon: supabase
+    display: true
+    order: 6
+
+  # Tools
+  - name: Git
+    slug: git
+    category: tool
+    icon: git
+    display: true
+    order: 1
+  - name: Bitbucket
+    slug: bitbucket
+    category: tool
+    icon: bitbucket
+    display: false
+    order: 2
+  - name: GitLab
+    slug: gitlab
+    category: tool
+    icon: gitlab
+    display: false
+    order: 3
+  - name: Jenkins
+    slug: jenkins
+    category: tool
+    icon: jenkins
+    display: true
+    order: 4
+  - name: Jira
+    slug: jira
+    category: tool
+    icon: jira
+    display: true
+    order: 5
+  - name: Confluence
+    slug: confluence
+    category: tool
+    icon: confluence
+    display: true
+    order: 6
+  - name: Figma
+    slug: figma
+    category: tool
+    icon: figma
+    display: true
+    order: 7
+  - name: TestFlight
+    slug: testflight
+    category: tool
+    icon: apple
+    display: true
+    order: 8
+  - name: Xcode
+    slug: xcode
+    category: tool
+    icon: xcode
+    display: false
+    order: 9
+  - name: Docker
+    slug: docker
+    category: tool
+    icon: docker
+    display: false
+    order: 10
+  - name: Swagger
+    slug: swagger
+    category: tool
+    icon: swagger
+    display: false
+    order: 11
