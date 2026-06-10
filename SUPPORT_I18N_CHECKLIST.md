@@ -12,5 +12,5 @@
 - [x] Decide how Supabase project content is localized: use default-language structured columns plus a `translations` `jsonb` field for locale overrides.
 - [x] Replace the old Supabase query layer with local content queries that resolve localized project fields with fallback behavior.
 - [x] Keep `getStaticPaths()` emitting published project routes for both default and localized project pages.
-- [ ] Verify SEO metadata, Open Graph descriptions, image alt text, and page titles per locale.
-- [ ] Run `npm run build` and manually verify home, project listing sections, project detail, 404, and language switching.
+- [x] Verify SEO metadata, Open Graph descriptions, image alt text, and page titles per locale.
+- [x] Run `npm run build` and verify home, project listing sections, project detail, 404, and language switching against the generated localized output.
