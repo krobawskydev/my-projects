@@ -5,13 +5,15 @@
 import Container from '../../components/ui/Container.astro'
 import SkillGroup from '../../components/skills/SkillGroup.astro'
 import type { SkillCategory } from '../../types/skill'
-import { SKILL_CATEGORY_LABELS, SKILL_CATEGORY_ORDER } from '../../types/skill'
+import { getSkillCategoryLabel, SKILL_CATEGORY_ORDER } from '../../types/skill'
+import { t, type Locale } from '../../i18n'
 
 export interface Props {
   skillsByCategory: Partial<Record<SkillCategory, Array<{ name: string; category: string }>>>
+  locale: Locale
 }
 
-const { skillsByCategory } = Astro.props
+const { skillsByCategory, locale } = Astro.props
 
 ---
 
@@ -19,13 +21,13 @@ const { skillsByCategory } = Astro.props
   <Container>
     <div class="mb-16">
       <p class="text-sm font-medium uppercase tracking-widest text-accent">
-        Expertise
+        {t(locale, 'skills.eyebrow')}
       </p>
       <h2 class="mt-3 text-3xl font-bold sm:text-4xl">
-        Skills &amp; Technologies
+        {t(locale, 'skills.title')}
       </h2>
       <p class="mt-4 max-w-lg text-muted">
-        The tools and technologies I use to bring ideas to life.
+        {t(locale, 'skills.description')}
       </p>
     </div>
 
@@ -37,7 +39,7 @@ const { skillsByCategory } = Astro.props
 
           return (
             <SkillGroup
-              category={SKILL_CATEGORY_LABELS[category]}
+              category={getSkillCategoryLabel(locale, category)}
               skills={skills}
             />
           )

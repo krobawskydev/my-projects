@@ -1,17 +1,11 @@
+import { t, type Locale } from '../i18n'
+
 export type ProjectType =
   | 'enterprise'
   | 'freelance'
   | 'startup'
   | 'personal'
   | 'landing_page'
-
-export const PROJECT_TYPE_LABELS: Record<ProjectType, string> = {
-  enterprise: 'Enterprise',
-  freelance: 'Freelance',
-  startup: 'Startup',
-  personal: 'Personal',
-  landing_page: 'Landing Page',
-}
 
 export const PROJECT_TYPE_VARIANTS: Record<ProjectType, string> = {
   enterprise: 'border border-border/40 bg-surface text-foreground',
@@ -71,4 +65,8 @@ export interface ProjectSkill {
   id: string
   project_id: string
   skill_id: string
+}
+
+export function getProjectTypeLabel(locale: Locale, projectType: ProjectType): string {
+  return t(locale, `projects.types.${projectType}`)
 }

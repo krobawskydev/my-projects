@@ -3,19 +3,21 @@
 import Container from '../../components/ui/Container.astro'
 import ProjectGrid from '../../components/projects/ProjectGrid.astro'
 import type { Project, ProjectType } from '../../types/project'
-import { PROJECT_TYPE_LABELS } from '../../types/project'
+import { getProjectTypeLabel } from '../../types/project'
+import { t, type Locale } from '../../i18n'
 
 export interface Props {
   projects: Pick<Project, 'title' | 'slug' | 'short_description' | 'cover_image' | 'featured' | 'project_type' | 'role' | 'company' | 'duration'>[]
+  locale: Locale
 }
 
-const { projects } = Astro.props
+const { projects, locale } = Astro.props
 const projectTypeOrder: ProjectType[] = ['enterprise', 'startup', 'freelance', 'personal', 'landing_page']
 
 const projectGroups = projectTypeOrder
   .map((type) => ({
     type,
-    label: PROJECT_TYPE_LABELS[type],
+    label: getProjectTypeLabel(locale, type),
     projects: projects.filter((project) => project.project_type === type),
   }))
   .filter((group) => group.projects.length > 0)
@@ -40,13 +42,13 @@ const projectSections = projectGroups.map((group) => {
   <Container>
     <div class="mb-16">
       <p class="text-sm font-medium uppercase tracking-[0.2em] text-accent">
-        Highlights
+        {t(locale, 'projects.eyebrow')}
       </p>
       <h2 class="mt-4 text-3xl font-bold sm:text-4xl tracking-tight">
-        Featured Projects
+        {t(locale, 'projects.title')}
       </h2>
       <p class="mt-3 max-w-lg text-muted">
-        A curated selection of the most impactful and technically significant work.
+        {t(locale, 'projects.description')}
       </p>
     </div>
 
@@ -61,7 +63,7 @@ const projectSections = projectGroups.map((group) => {
               <span class="h-px flex-1 bg-border" />
             </div>
 
-            <ProjectGrid projects={group.projects} />
+            <ProjectGrid projects={group.projects} locale={locale} />
           </div>
         ))
       }

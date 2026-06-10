@@ -3,32 +3,45 @@
 import '../styles/global.css'
 import Navbar from '../components/ui/Navbar.astro'
 import Footer from '../components/ui/Footer.astro'
+import {
+  defaultLocale,
+  getAlternateLocalePath,
+  getTranslations,
+  locales,
+  type Locale,
+} from '../i18n'
 
 export interface Props {
   title: string
   description?: string
   image?: string
+  locale?: Locale
 }
 
-const defaultDescription = 'Portfolio of Ricardo Berrospi, a senior mobile and fullstack engineer building scalable fintech, enterprise SaaS, and production mobile systems.'
 const defaultImage = '/brand/logo.svg'
 
 const {
   title,
-  description = defaultDescription,
   image = defaultImage,
+  locale = defaultLocale,
+  description = getTranslations(locale).meta.defaultDescription,
 } = Astro.props
 
 const siteName = 'krobawsky.dev'
 const author = 'Ricardo Berrospi Quispe'
 const pageTitle = `${title} — ${siteName}`
-const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).toString()
-const imageUrl = new URL(image || defaultImage, Astro.url.origin).toString()
+const siteOrigin = Astro.site ?? Astro.url.origin
+const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).toString()
+const imageUrl = new URL(image || defaultImage, siteOrigin).toString()
+const alternateLinks = locales.map((alternateLocale) => ({
+  locale: alternateLocale,
+  href: new URL(getAlternateLocalePath(Astro.url.pathname, alternateLocale), siteOrigin).toString(),
+}))
 
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,6 +51,16 @@ const imageUrl = new URL(image || defaultImage, Astro.url.origin).toString()
     <meta name="description" content={description} />
     <meta name="author" content={author} />
     <link rel="canonical" href={canonicalUrl} />
+    {
+      alternateLinks.map((alternate) => (
+        <link rel="alternate" hreflang={alternate.locale} href={alternate.href} />
+      ))
+    }
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(getAlternateLocalePath(Astro.url.pathname, defaultLocale), siteOrigin).toString()}
+    />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
@@ -57,10 +80,10 @@ const imageUrl = new URL(image || defaultImage, Astro.url.origin).toString()
     <link rel="icon" href="/favicon.ico" />
   </head>
   <body class="min-h-screen bg-background text-foreground antialiased">
-    <Navbar />
+    <Navbar locale={locale} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
   </body>
 </html>

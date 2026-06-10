@@ -1,16 +1,27 @@
 ---
+import {
+  localeLabels,
+  locales,
+  localizePath,
+  removeLocaleFromPathname,
+  t,
+  type Locale,
+} from '../../i18n'
 
 export interface Props {
   class?: string
+  locale: Locale
 }
 
-const { class: className } = Astro.props
+const { class: className, locale } = Astro.props
+const currentPath = Astro.url.pathname
+const basePath = removeLocaleFromPathname(currentPath)
 
 const navLinks = [
-  { label: 'Projects', href: '#featured' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: t(locale, 'nav.projects'), href: `${localizePath('/', locale)}#featured` },
+  { label: t(locale, 'nav.skills'), href: `${localizePath('/', locale)}#skills` },
+  { label: t(locale, 'nav.about'), href: `${localizePath('/', locale)}#about` },
+  { label: t(locale, 'nav.contact'), href: `${localizePath('/', locale)}#contact` },
 ]
 
 ---
@@ -19,7 +30,7 @@ const navLinks = [
   class={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/50 ${className ?? ''}`}
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-    <a href="/" class="flex items-center gap-2">
+    <a href={localizePath('/', locale)} class="flex items-center gap-2">
       <img src="/brand/logo.svg" alt="krobawsky.dev" class="h-6" />
     </a>
 
@@ -36,10 +47,33 @@ const navLinks = [
       }
     </div>
 
+    <div class="hidden items-center gap-1 rounded-lg border border-border bg-surface p-1 sm:flex">
+      {
+        locales.map((availableLocale) => {
+          const isActive = availableLocale === locale
+
+          return (
+            <a
+              href={localizePath(basePath, availableLocale)}
+              hreflang={availableLocale}
+              aria-current={isActive ? 'page' : undefined}
+              class={`rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors duration-200 ${
+                isActive
+                  ? 'bg-accent text-background'
+                  : 'text-muted hover:bg-elevated hover:text-foreground'
+              }`}
+            >
+              {localeLabels[availableLocale]}
+            </a>
+          )
+        })
+      }
+    </div>
+
     <button
       id="mobile-menu-toggle"
       class="flex items-center justify-center rounded-lg p-2 text-muted hover:text-foreground hover:bg-surface sm:hidden"
-      aria-label="Toggle menu"
+      aria-label={t(locale, 'nav.toggleMenu')}
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="3" y1="6" x2="21" y2="6" />
@@ -60,6 +94,29 @@ const navLinks = [
             {link.label}
           </a>
         ))
+      }
+    </div>
+
+    <div class="mt-4 flex items-center gap-2 border-t border-border/50 pt-4">
+      {
+        locales.map((availableLocale) => {
+          const isActive = availableLocale === locale
+
+          return (
+            <a
+              href={localizePath(basePath, availableLocale)}
+              hreflang={availableLocale}
+              aria-current={isActive ? 'page' : undefined}
+              class={`rounded-md px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                isActive
+                  ? 'bg-accent text-background'
+                  : 'text-muted hover:bg-surface hover:text-foreground'
+              }`}
+            >
+              {localeLabels[availableLocale]}
+            </a>
+          )
+        })
       }
     </div>
   </div>

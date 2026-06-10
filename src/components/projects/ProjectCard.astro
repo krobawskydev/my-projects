@@ -1,22 +1,24 @@
 ---
 
 import type { Project, ProjectType } from '../../types/project'
-import { PROJECT_TYPE_LABELS, PROJECT_TYPE_VARIANTS } from '../../types/project'
+import { getProjectTypeLabel, PROJECT_TYPE_VARIANTS } from '../../types/project'
+import { localizePath, t, type Locale } from '../../i18n'
 
 export interface Props {
   project: Pick<Project, 'title' | 'slug' | 'short_description' | 'cover_image' | 'featured' | 'project_type' | 'role' | 'company' | 'duration'>
+  locale: Locale
 }
 
-const { project } = Astro.props
+const { project, locale } = Astro.props
 const { title, slug, short_description, cover_image, featured, project_type, role, company, duration } = project
 
-const typeLabel = PROJECT_TYPE_LABELS[project_type]
+const typeLabel = getProjectTypeLabel(locale, project_type)
 const typeVariant = PROJECT_TYPE_VARIANTS[project_type]
 
 ---
 
 <a
-  href={`/projects/${slug}`}
+  href={localizePath(`/projects/${slug}`, locale)}
   class="group block rounded-xl border border-border bg-surface overflow-hidden transition-all duration-300 hover:border-accent/20 hover:bg-elevated hover:-translate-y-0.5"
 >
   <div class="aspect-video overflow-hidden bg-elevated relative">
@@ -42,7 +44,7 @@ const typeVariant = PROJECT_TYPE_VARIANTS[project_type]
       {
         featured && (
           <span class="inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium uppercase tracking-wider border border-accent/20 bg-accent/10 text-accent">
-            Featured
+            {t(locale, 'projects.detail.featured')}
           </span>
         )
       }
@@ -66,7 +68,7 @@ const typeVariant = PROJECT_TYPE_VARIANTS[project_type]
     </p>
 
     <div class="mt-4 flex items-center text-sm font-medium text-accent opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-1">
-      View Case Study
+      {t(locale, 'projects.detail.caseStudy')}
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
         <line x1="5" y1="12" x2="19" y2="12" />
         <polyline points="12 5 19 12 12 19" />
