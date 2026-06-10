@@ -1,7 +1,14 @@
 ---
 import { project } from '../../lib/project'
+import { t, type Locale } from '../../i18n'
 
 const currentYear = new Date().getFullYear();
+
+export interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
 ---
 
 <footer class="border-t border-border">
@@ -17,7 +24,7 @@ const currentYear = new Date().getFullYear();
           target="_blank"
           rel="noopener noreferrer"
           class="text-muted transition-colors duration-200 hover:text-foreground"
-          aria-label="GitHub"
+          aria-label={t(locale, 'footer.github')}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +43,7 @@ const currentYear = new Date().getFullYear();
           target="_blank"
           rel="noopener noreferrer"
           class="text-muted transition-colors duration-200 hover:text-foreground"
-          aria-label="LinkedIn"
+          aria-label={t(locale, 'footer.linkedin')}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +62,7 @@ const currentYear = new Date().getFullYear();
           target="_blank"
           rel="noopener noreferrer"
           class="text-muted transition-colors duration-200 hover:text-foreground"
-          aria-label="Twitter"
+          aria-label={t(locale, 'footer.twitter')}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +79,7 @@ const currentYear = new Date().getFullYear();
       </div>
 
       <p class="text-sm text-muted">
-        &copy; {currentYear} krobawsky.dev. All rights reserved.
+        &copy; {currentYear} krobawsky.dev. {t(locale, 'footer.rights')}
       </p>
     </div>
   </div>

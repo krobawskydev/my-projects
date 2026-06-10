@@ -1,5 +1,11 @@
 ---
+import { localizePath, t, type Locale } from '../../i18n'
 
+export interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
 ---
 
 <section class="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -13,55 +19,53 @@
     <div class="max-w-3xl">
       <div class="animate-fade-in flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-muted mb-8">
         <span class="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-soft" />
-        Senior Mobile &amp; Fullstack Engineer
+        {t(locale, 'hero.eyebrow')}
       </div>
 
       <h1 class="animate-slide-up text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-tight">
-        Building
+        {t(locale, 'hero.titlePrefix')}
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-400">
-          production systems
+          {t(locale, 'hero.titleEmphasis')}
         </span>
         <br />
-        at scale
+        {t(locale, 'hero.titleSuffix')}
       </h1>
 
       <p class="animate-slide-up mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-muted" style="animation-delay: 0.1s">
-        Senior engineer with deep experience across fintech, enterprise platforms, and modern mobile applications. 
-        I architect and build systems that handle millions of transactions, serve thousands of users, 
-        and ship products that define industries.
+        {t(locale, 'hero.description')}
       </p>
 
       <div class="animate-slide-up mt-10 flex flex-wrap gap-3" style="animation-delay: 0.2s">
         <a
-          href="/#enterprise"
+          href={`${localizePath('/', locale)}#enterprise`}
           class="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-background transition-all duration-200 hover:bg-accent/90 hover:shadow-[0_0_30px_-5px_var(--color-accent)]"
         >
-          Enterprise Experience
+          {t(locale, 'hero.enterpriseCta')}
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
           </svg>
         </a>
         <a
-          href="/#independent"
+          href={`${localizePath('/', locale)}#independent`}
           class="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-6 py-3 text-sm font-medium text-foreground transition-all duration-200 hover:border-accent/50 hover:bg-elevated"
         >
-          Independent Work
+          {t(locale, 'hero.independentCta')}
         </a>
       </div>
 
       <div class="animate-fade-in mt-16 grid grid-cols-3 gap-8 sm:gap-12" style="animation-delay: 0.4s">
         <div>
           <p class="text-2xl font-bold text-foreground">6+</p>
-          <p class="mt-1 text-xs text-muted">Years Experience</p>
+          <p class="mt-1 text-xs text-muted">{t(locale, 'hero.metrics.yearsExperience')}</p>
         </div>
         <div>
           <p class="text-2xl font-bold text-foreground">20+</p>
-          <p class="mt-1 text-xs text-muted">Projects Shipped</p>
+          <p class="mt-1 text-xs text-muted">{t(locale, 'hero.metrics.projectsShipped')}</p>
         </div>
         <div>
           <p class="text-2xl font-bold text-foreground">4</p>
-          <p class="mt-1 text-xs text-muted">Industries Served</p>
+          <p class="mt-1 text-xs text-muted">{t(locale, 'hero.metrics.industriesServed')}</p>
         </div>
       </div>
     </div>

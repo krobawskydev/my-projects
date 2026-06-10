@@ -7,24 +7,28 @@ import SkillsSection from '../sections/skills/SkillsSection.astro'
 import AboutSection from '../sections/about/AboutSection.astro'
 import ContactSection from '../sections/contact/ContactSection.astro'
 
-import { getFeaturedProjects, getSkillsByCategory } from '../lib/supabase/queries'
+import { getFeaturedProjects, getSkillsByCategory } from '../lib/content/queries'
+import { getLocaleFromPathname, getTranslations } from '../i18n'
 import type { SkillCategory } from '../types/skill'
 
-const featuredProjects = await getFeaturedProjects()
+const locale = getLocaleFromPathname(Astro.url.pathname)
+const translations = getTranslations(locale)
+const featuredProjects = await getFeaturedProjects(locale)
 const skillsByCategory = await getSkillsByCategory()
 
 const skillsByCategoryTyped = skillsByCategory as Partial<Record<SkillCategory, Array<{ name: string; category: string }>>>
 ---
 
 <BaseLayout
-  title="Home"
-  description="Ricardo Berrospi Quispe is a senior mobile and fullstack engineer building scalable fintech, enterprise SaaS, and production mobile applications."
+  title={translations.meta.home.title}
+  description={translations.meta.home.description}
+  locale={locale}
 >
-  <Hero />
+  <Hero locale={locale} />
   {
-    featuredProjects.length > 0 && <FeaturedProjects projects={featuredProjects} />
+    featuredProjects.length > 0 && <FeaturedProjects projects={featuredProjects} locale={locale} />
   }
-  <SkillsSection skillsByCategory={skillsByCategoryTyped} />
-  <AboutSection />
-  <ContactSection />
+  <SkillsSection skillsByCategory={skillsByCategoryTyped} locale={locale} />
+  <AboutSection locale={locale} />
+  <ContactSection locale={locale} />
 </BaseLayout>

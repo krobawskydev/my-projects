@@ -1,7 +1,13 @@
 ---
 
 import Container from '../../components/ui/Container.astro'
+import { localizePath, t, type Locale } from '../../i18n'
 
+export interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
 ---
 
 <section id="about" class="py-24 sm:py-32 border-t border-border">
@@ -9,54 +15,49 @@ import Container from '../../components/ui/Container.astro'
     <div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
       <div>
         <p class="text-sm font-medium uppercase tracking-[0.2em] text-accent">
-          About
+          {t(locale, 'about.eyebrow')}
         </p>
         <h2 class="mt-4 text-3xl font-bold sm:text-4xl tracking-tight">
-          Senior Engineer with a product mindset
+          {t(locale, 'about.title')}
         </h2>
       </div>
 
       <div class="space-y-5">
         <p class="text-base sm:text-lg leading-relaxed text-muted">
-          I'm a senior mobile and fullstack engineer who has built products across fintech, 
-          enterprise SaaS, and consumer mobile. I focus on scalable architecture, clean 
-          abstractions, and systems that perform under real-world conditions.
+          {t(locale, 'about.paragraphs.intro')}
         </p>
         <p class="text-base sm:text-lg leading-relaxed text-muted">
-          My work ranges from leading frontend architecture at fintech companies processing 
-          millions in transactions, to building full-stack mobile applications from the ground up, 
-          to consulting with startups on architecture and product strategy.
+          {t(locale, 'about.paragraphs.work')}
         </p>
         <p class="text-base sm:text-lg leading-relaxed text-muted">
-          I believe great engineering is about ownership — understanding the problem deeply, 
-          making pragmatic tradeoffs, and delivering systems that are both robust and adaptable.
+          {t(locale, 'about.paragraphs.belief')}
         </p>
 
         <div class="grid grid-cols-2 gap-4 pt-4">
           <div class="rounded-lg border border-border bg-surface p-4">
-            <p class="text-xs uppercase tracking-wider text-muted mb-1">Focus</p>
-            <p class="text-sm font-medium">Full-Stack Architecture</p>
+            <p class="text-xs uppercase tracking-wider text-muted mb-1">{t(locale, 'about.cards.focus.label')}</p>
+            <p class="text-sm font-medium">{t(locale, 'about.cards.focus.value')}</p>
           </div>
           <div class="rounded-lg border border-border bg-surface p-4">
-            <p class="text-xs uppercase tracking-wider text-muted mb-1">Domain</p>
-            <p class="text-sm font-medium">Fintech &amp; SaaS</p>
+            <p class="text-xs uppercase tracking-wider text-muted mb-1">{t(locale, 'about.cards.domain.label')}</p>
+            <p class="text-sm font-medium">{t(locale, 'about.cards.domain.value')}</p>
           </div>
           <div class="rounded-lg border border-border bg-surface p-4">
-            <p class="text-xs uppercase tracking-wider text-muted mb-1">Platform</p>
-            <p class="text-sm font-medium">Web &amp; Mobile</p>
+            <p class="text-xs uppercase tracking-wider text-muted mb-1">{t(locale, 'about.cards.platform.label')}</p>
+            <p class="text-sm font-medium">{t(locale, 'about.cards.platform.value')}</p>
           </div>
           <div class="rounded-lg border border-border bg-surface p-4">
-            <p class="text-xs uppercase tracking-wider text-muted mb-1">Approach</p>
-            <p class="text-sm font-medium">Product-Driven</p>
+            <p class="text-xs uppercase tracking-wider text-muted mb-1">{t(locale, 'about.cards.approach.label')}</p>
+            <p class="text-sm font-medium">{t(locale, 'about.cards.approach.value')}</p>
           </div>
         </div>
 
         <div class="pt-2">
           <a
-            href="#contact"
+            href={`${localizePath('/', locale)}#contact`}
             class="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-all duration-200 hover:border-accent/50 hover:bg-elevated"
           >
-            Let's work together
+            {t(locale, 'about.cta')}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12" />
               <polyline points="12 5 19 12 12 19" />
