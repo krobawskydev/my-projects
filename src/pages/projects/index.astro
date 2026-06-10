@@ -3,12 +3,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Container from '../../components/ui/Container.astro'
 import ProjectGrid from '../../components/projects/ProjectGrid.astro'
-import { getProjects } from '../../lib/supabase/queries'
+import { getProjects } from '../../lib/content/queries'
 import { getLocaleFromPathname, getTranslations } from '../../i18n'
 
 const locale = getLocaleFromPathname(Astro.url.pathname)
 const translations = getTranslations(locale)
-const projects = await getProjects()
+const projects = await getProjects(locale)
 ---
 
 <BaseLayout

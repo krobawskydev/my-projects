@@ -34,6 +34,7 @@ export interface Project {
   published: boolean
   display_order: number
   highlights: string[]
+  translations?: ProjectTranslations | null
   created_at: string
   updated_at: string
   skills?: Skill[]
@@ -66,6 +67,18 @@ export interface ProjectSkill {
   project_id: string
   skill_id: string
 }
+
+export type ProjectTranslationFields = {
+  title?: string
+  short_description?: string
+  content?: string
+  role?: string
+  company?: string
+  duration?: string
+  highlights?: string[]
+}
+
+export type ProjectTranslations = Partial<Record<Locale, ProjectTranslationFields>>
 
 export function getProjectTypeLabel(locale: Locale, projectType: ProjectType): string {
   return t(locale, `projects.types.${projectType}`)

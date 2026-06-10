@@ -6,7 +6,7 @@ import Badge from "../../components/ui/Badge.astro";
 import {
   getProjectBySlugWithSkills,
   getAllProjectSlugs,
-} from "../../lib/supabase/queries";
+} from "../../lib/content/queries";
 import { getLocaleFromPathname, getTranslations, localizePath } from "../../i18n";
 import {
   getProjectTypeLabel,
@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const { slug } = Astro.params;
 const locale = getLocaleFromPathname(Astro.url.pathname);
 const translations = getTranslations(locale);
-const project = await getProjectBySlugWithSkills(slug!);
+const project = await getProjectBySlugWithSkills(slug!, locale);
 
 if (!project) {
   return Astro.redirect(localizePath("/404", locale));

@@ -7,13 +7,13 @@ import SkillsSection from '../sections/skills/SkillsSection.astro'
 import AboutSection from '../sections/about/AboutSection.astro'
 import ContactSection from '../sections/contact/ContactSection.astro'
 
-import { getFeaturedProjects, getSkillsByCategory } from '../lib/supabase/queries'
+import { getFeaturedProjects, getSkillsByCategory } from '../lib/content/queries'
 import { getLocaleFromPathname, getTranslations } from '../i18n'
 import type { SkillCategory } from '../types/skill'
 
 const locale = getLocaleFromPathname(Astro.url.pathname)
 const translations = getTranslations(locale)
-const featuredProjects = await getFeaturedProjects()
+const featuredProjects = await getFeaturedProjects(locale)
 const skillsByCategory = await getSkillsByCategory()
 
 const skillsByCategoryTyped = skillsByCategory as Partial<Record<SkillCategory, Array<{ name: string; category: string }>>>

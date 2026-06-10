@@ -9,20 +9,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "sync:skills": "tsx scripts/sync-skills.ts",
-    "sync:projects": "tsx scripts/sync-projects.ts"
+    "astro": "astro"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.106.1",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.7",
+    "js-yaml": "^4.1.1",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.9",
-    "dotenv": "^17.4.2",
-    "js-yaml": "^4.1.1",
-    "tsx": "^4.22.3"
+    "@types/js-yaml": "^4.0.9"
   }
 }

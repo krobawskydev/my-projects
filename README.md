@@ -1,25 +1,22 @@
 # Krobawsky Dev Portfolio
 
-Personal portfolio starter built with Astro, Tailwind CSS, and Supabase.
+Portfolio site built with Astro, Tailwind CSS, and local YAML content.
 
-The app reads projects and skills from Supabase and renders a simple portfolio homepage:
+The app reads projects and skills from `content/seeds/*.yml` during build and renders:
 
 - Hero
 - Featured Projects
 - Skills
 - About
 - Contact
-
-Personal content is intentionally ignored from Git. Each developer can create their own local `content/` files, sync them to their own Supabase project, and reuse the same frontend.
+- Project detail pages
 
 ## Tech Stack
 
 - Astro 6
 - TypeScript
 - Tailwind CSS 4
-- Supabase
-- `tsx` for sync scripts
-- `js-yaml` for YAML seed files
+- `js-yaml` for local content parsing
 
 ## Project Structure
 
@@ -27,20 +24,13 @@ Personal content is intentionally ignored from Git. Each developer can create th
 src/
   components/
   layouts/
-  lib/supabase/
+  lib/content/
   pages/
   sections/
   styles/
   types/
 
-scripts/
-  sync-skills.ts
-  sync-projects.ts
-
-supabase/
-  schema.sql
-
-content/              # ignored, local-only data
+content/              # ignored by Git in this starter
   seeds/
     skills.yml
     projects.yml
@@ -54,46 +44,12 @@ Install dependencies:
 npm install
 ```
 
-Create `.env`:
+## Local Content
 
-```sh
-cp .env.example .env
-```
+The site expects two YAML files:
 
-Fill in your Supabase values:
-
-```env
-PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-```
-
-The public anon key is used by the frontend. The service role key is recommended for the local sync scripts because they write data.
-
-## Create Supabase Tables
-
-Open your Supabase SQL editor and run:
-
-```sql
--- copy and run supabase/schema.sql
-```
-
-The schema creates:
-
-- `projects`
-- `skills`
-- `project_skills`
-- public read policies for the portfolio frontend
-- unique slugs for safe upserts
-
-## Create Local Data
-
-The `content/` directory is ignored by Git. Create your local seed files:
-
-```sh
-mkdir -p content/seeds
-touch content/seeds/skills.yml content/seeds/projects.yml
-```
+- `content/seeds/skills.yml`
+- `content/seeds/projects.yml`
 
 ### `content/seeds/skills.yml`
 
@@ -103,16 +59,15 @@ skills:
     slug: typescript
     category: language
     icon: typescript
+    display: true
+    order: 1
 
   - name: Astro
     slug: astro
     category: frontend
     icon: astro
-
-  - name: Supabase
-    slug: supabase
-    category: cloud
-    icon: supabase
+    display: true
+    order: 2
 ```
 
 Allowed categories:
@@ -154,7 +109,18 @@ projects:
     technologies:
       - TypeScript
       - Astro
-      - Supabase
+    translations:
+      es:
+        title: Mi proyecto
+        short_description: Resumen corto para tarjetas.
+        content: >
+          Descripcion larga en espanol para la pagina de detalle.
+        role: Desarrollador Fullstack
+        company: Mi Empresa
+        duration: 2024
+        highlights:
+          - Construccion de la primera version del producto.
+          - Despliegue a produccion.
 ```
 
 Allowed project types:
@@ -165,35 +131,18 @@ Allowed project types:
 - `personal`
 - `landing_page`
 
-Each item in `technologies` should match a skill `name` or `slug`. The project sync script uses those matches to create `project_skills` relations.
+Each item in `technologies` should match a skill `name` or `slug`. The local content layer resolves those entries into `skills` for each project detail page.
 
-## Import Data
+## i18n Content Model
 
-Sync skills first:
+UI text lives in `src/i18n/*.ts`.
 
-```sh
-npm run sync:skills
-```
+Project content uses a hybrid local model:
 
-This makes Supabase match `content/seeds/skills.yml` exactly:
+- top-level fields are the default locale
+- `translations.<locale>` contains per-locale overrides
 
-- inserts new skills
-- updates skills with matching `slug`
-- deletes skills that are not in `skills.yml`
-
-Then sync projects:
-
-```sh
-npm run sync:projects
-```
-
-This will:
-
-- upsert projects by `slug`
-- match project `technologies` with existing skills
-- create `project_skills` relations
-
-Run `sync:skills` before `sync:projects` whenever you add new technologies.
+When a localized field is missing, the site falls back to the default value automatically.
 
 ## Development
 
@@ -214,10 +163,6 @@ Preview the production build:
 ```sh
 npm run preview
 ```
-
-## Notes For Reuse
-
-- Keep `content/` local and private.
 - Commit app code, schema, and scripts.
 - Use your own Supabase project and environment variables.
 - Keep slugs stable; they are the sync identity for both projects and skills.

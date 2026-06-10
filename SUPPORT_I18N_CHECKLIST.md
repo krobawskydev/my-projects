@@ -9,8 +9,8 @@
 - [x] Replace hardcoded UI copy in nav, footer, hero, featured projects, skills, about, contact, 404, and project detail pages.
 - [x] Localize labels/constants in project and skill types, including project type labels and skill category labels.
 - [x] Add a language switcher to `Navbar.astro` that preserves the current page when possible.
-- [ ] Decide how Supabase project content is localized: translated columns, translation tables, or JSON fields.
-- [ ] Update Supabase query helpers in `src/lib/supabase/queries.ts` to fetch localized project fields and fall back to the default language.
-- [ ] Update `getStaticPaths()` for project pages so every published project emits locale-specific routes.
+- [x] Decide how Supabase project content is localized: use default-language structured columns plus a `translations` `jsonb` field for locale overrides.
+- [x] Replace the old Supabase query layer with local content queries that resolve localized project fields with fallback behavior.
+- [x] Keep `getStaticPaths()` emitting published project routes for both default and localized project pages.
 - [ ] Verify SEO metadata, Open Graph descriptions, image alt text, and page titles per locale.
 - [ ] Run `npm run build` and manually verify home, project listing sections, project detail, 404, and language switching.
